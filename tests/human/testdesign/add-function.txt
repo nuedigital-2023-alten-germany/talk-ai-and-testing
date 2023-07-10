@@ -1,0 +1,19 @@
+Äquivalenzklassenbildung
+
+gültige Klasse
+ungültige Klasse
+
+positive Werte
+negative Werte
+
+first = positiv, second = positiv
+first = positiv, second = negativ
+first = negativ, second = positiv
+first = negativ, second = negativ
+
+first = Minwert, second = -1
+first = Maxwert, second = +1
+
+first = maximale Nachkommastellenzahl um 1 Nachkommastelle überschreiten, ...
+
+-> wie viele Testfälle generiert codium.ai, damit alle diese TF enthalten sind ?

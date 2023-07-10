@@ -1,0 +1,75 @@
+Hintergrund dieser simple function: Entscheidungsüberdeckung, d.h. die Strukur des Codes steht im Vordergrund (nicht die Sinnhaftigkeit)
+
+- Äquivalenzklassenbildung:
+-- first
+-unendlich ... 10.0
+10.0000...1 ... +unendlich
+-> Repräsentant der Klassen:
+-10.453 und 2387
+
+-- second
+-unendlich .. 10.0
+10.000...1 ... +unendlich
+mit entsprechender Kombinatorik
+
+-> Repräsentant der Klassen:
+-23 und 387.67
+
+-- valid 
+-unendlich ... 10
+-> Repräsentanten: -4, 7
+
+-- invalid 
+>10 ... unendlich
+-> Repräsentanten: 12, 2387
+
+- Grenzwertanalyse
+-- first:
+10.0
+-> Testdaten: 9.999999999999, 10.0, 10.000000000000... 1 
+abhängig von der geforderten Genauigkeit der Berechnung -> kommt aus Anforderung
+-unendlich
++unendlich
+
+-- second:
+10.0
+-> Testdaten: 9.999999999999, 10.0, 10.000000000000... 1 
+abhängig von der geforderten Genauigkeit der Berechnung -> kommt aus Anforderung
+-unendlich
++unendlich
+
+
+- Kombinatorik bzgl. des || innerhalb der if-Abfrage
+-- first > 10, second > 10
+-- first < 10, second > 10
+-- first > 10, second < 10
+-- first < 10, second < 10
+
+
+-> 
+first = 9.99, second = 9.99
+first = 10.00, second = 10.00
+first = 10.01, second = 10.01
+first = 9.99, second = 10.01
+first = 10.01, second = 10.00
+first = 10.00, second = 10.01
+first = 10.00, second = 9.99
+first = 9.99, second = 10.00
+
+
+
+- evtl. oktale oder binäre Eingaben und die Kombinatorik
+-> 
+
+- keine number als Eingabewert
+-- Buchstaben
+-- Sonderzeichen
+-- 
+
+- leere Parameter
+add(<leerer Parameter>, <leerer Parameter>)
++ Kombinatorik daraus
+
+- ist number eine natürliche Zahl oder reel (FLiesskomma, float, ...) ?
+
+

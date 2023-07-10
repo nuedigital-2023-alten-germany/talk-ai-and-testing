@@ -1,0 +1,2 @@
+def simpleStringReturn():
+    return 'foobar'

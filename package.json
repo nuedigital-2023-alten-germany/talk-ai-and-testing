@@ -1,0 +1,30 @@
+{
+  "name": "talk-ai-and-testing",
+  "version": "1.0.0",
+  "description": "Dieses Repository stellt einfache Funktionen und ihre passenden Tests in den Programmiersprachen Typescript und Python zur verfügung. Die erstellten Tests werden in AI-generierte Tests und von Entwicklern/Testern geschriebene Tests unterteilt.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/common": "^16.0.4",
+    "@angular/material": "^16.0.3",
+    "@aws-sdk/client-cloudwatch-logs": "^3.344.0",
+    "@aws-sdk/client-dynamodb": "^3.344.0",
+    "@aws-sdk/lib-dynamodb": "^3.344.0",
+    "@types/jest": "^29.5.2",
+    "aws-lambda": "^1.0.7",
+    "jest": "^29.5.0",
+    "jest-html-reporter": "^3.10.0",
+    "nanoid": "^4.0.2",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}

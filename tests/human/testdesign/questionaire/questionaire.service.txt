@@ -1,0 +1,70 @@
+Jede Public-Methode einzeln
+
+getCurrentQuestion
+- Äquivalenzklassen für currentQuestionId
+    - gültig -> true -> nicht-leerer String
+    - ungültig -> false -> leerer String
+
+ - Äquivalenzklassen für questionMap
+    - gültig
+    - ungültig 
+        existiert questionMap ?
+        questionMap nicht initialisiert -> wird über Test des constructor geprüft
+        currentQuestionId > Elemente im Objekt -> undefined 
+        -> was ist das erwartete Ergebnis an die Methode? Wird undefined akzeptiert ?
+
+- Äquivalenzklassen für questionnaire
+    - gültig -> wenn 0. Element vorhanden
+    - ungültig
+        - questionnaire ist leer, enthält also keine Elemente, weil im constructor eine leere JSON übergeben wurde
+        
+
+setCurrentQuestionId
+- Aufrufen, dass keine Exception fliegt
+- Prüfen, dass in this.currentQuestionId tatsächlich den Paramter enthält
+    -> dafür Codeänderung: getCurrentQuestionId implementieren
+    -> und dann in Folge überall im Code verwenden
+
+answerQuestion
+- Prüfen, ob der Übergabewert korrekt in this.answers gespeichert wird -> möglich, da getter existiert
+- Prüfen, ob der korrekte Rückgabewert erzeugt wird (Blackbox)
+- Prüfen, dass nach dem Aufruf alle folgenden Answers gelöscht sind
+- Prüfen, was passiert, wenn als NextQuestionId die eigene questionID zurück geliefert wird
+    -> Endlosschleife -> ist das gewollt?
+- Prüfen, was passiert, wenn man die letzte Frage als Übergabeparameter verwendet
+    -> was ist dann die NextQuestionId ?
+- beide privaten Methoden prüfen
+    - getNextQuestionId -> Testfall für "calculatingTheNextQuestionId" -> ist allgemein gehalten und bezieht sich ausschließlich auf das Verhalten, dass immer eine NextQuestionId berechnet wird
+        - questionID existiert im Fragebogen und enthält eine Antwort und eine NextQuestionId und eine übergeordnete NextQuestionId -> die aus der Antwort wird erwartet
+        - questionID existiert im Fragebogen und enthält eine Antwort und eine NextQuestionId und keine übergeordnete NextQuestionId -> die aus der Antwort wird erwartet
+        - questionID existiert im Fragebogen und enthält eine Antwort aber keine NextQuestionId, aber eine übergeordnete NextQuestionId
+        - questionID existiert im Fragebogen und enthält eine Antwort aber keine NextQuestionId, aber keine übergeordnete NextQuestionId
+            -> wir erwarten eine Exception
+        - questionID existiert nicht
+    - removeLaterAnswers
+        - was passiert, wenn im JSON keine fortlaufende Nummer als ID verwendet wird
+        - was passiert, wenn questionID nicht existiert
+        - sicherstellen, dass nichts passiert, wenn es keine "laterAnswers" gibt
+
+getAnswers
+- was passiert, wenn answers leer ?
+- prüfen, dass Rückgabewert korrekt ist
+
+constructor
+- Umgang mit leerer questionnaire prüfen / sicherstellen -> leere QuestionMap
+- Formatprüfungen nicht notwendig, weil der Fragebogen als typescript-Datei vorhanden ist -> Typsicher
+    -> muss nur dann berücksichtigt werden, falls der Fragebogen über ein API etc. kommen würde
+
+
+private-Methoden würden wir auch prüfen !
+
+getNextQuestionId
+    -> erwarten wir von codium dann auch 
+    -> weil wir im Whitebox-Test sind
+    - answer vorhanden -> nächste answer
+    - ...
+removeLaterAnswers:
+    whitebox-Test
+
+
+

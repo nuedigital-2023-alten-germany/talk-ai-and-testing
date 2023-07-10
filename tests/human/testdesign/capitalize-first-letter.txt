@@ -1,0 +1,12 @@
+String = "hallo" -> "Hallo"
+String = "1hallo" -> "1hallo" ?
+- oder: String = "1hallo" -> "!hallo" ?
+- oder Exception ?
+- Verhalten gleich bei String = "€" -> "€" als Repräsentant für Sonderzeichen
+String = null as any-> "" oder exception ? -> Erwartungshaltung des Anwenders muss geprüft werden, also dass die Funktion nicht crasht
+String = "Hallo" -> "Hallo"
+String = "h" -> "H"
+String = "" -> "" (Erwartungshaltung des Anwenders)
+String = " allo" -> " allo"
+
+-> Klärung notwendig, wie "toUpperCase" eigentlich funktioniert, was erwartet werden kann

@@ -1,0 +1,34 @@
+An sich "sinnlos", weil sie ausschliesslich eine bereits vorhanden Funktion im Framework aufruft
+-> ein Ergebnis eines manuellen Tests
+-> wäre sinnvoll, wenn wir etwas zusätzlich machen würden, wie z.B. CaseInsensitive suchen, was TypeScript so nicht macht.
+
+-> wenn wir das aber im Projekt trotzdem so drin lassen, dann müssten wir sicherstellen, dass das Verhalten immer so bleibt
+-> Regressionstest notwendig, um sicherzustellen, dass nicht nachträglich unbemerkt eine solche CaseInsensitivät eingebaut wird.
+
+für Vortrag:
+tatsächlich genau so vorgehen:
+Version 1: lassen wir so
+Version 2: wir erweitern die Funktion
+
+Testfälle:
+- bestehende Tests müssen mit der hinzugefügten Version der Methode weiterhin funktionieren
+-- wir übergeben nur 2 Parameter
+-- mainString = "Hallo", subString = "Hallo" -> true als Ergebnis
+-- mainString = "Hallo", subString = "hallo" -> false als Ergebnis
+-- mainString = "HalloHallo", subString = "Hallo"
+-- mainString = "", subString = "Hallo"
+-- mainString = "Hallo", subString = ""
+-- mainString = null as any, subString = null as any -> exception
+-- mainString = "", subString = null as any
+-- mainString = "Hallo", subString = null as any
+-- mainString = Emoji aus mehreren Unicode, subString = nur ein Teil dieses Emojis
+-- mainString = "11", subString = "1" -> weil wir hier tatsächlich im Regressionstest sicherstellen müssen, dass nicht nachträglich Einschränkungen eingebaut werden (z.B. reine Zahlen aussortiert werden)
+
+- neue Testfälle, die sich mit dem Flag und deren Auswirkungen beschäftigen
+-- isCaseInsensitive = true, mainString = "Hallo", subString = "hallo" -> true als Ergebnis
+-- isCaseInsensitive = true, mainString = null as any, subString = null as any -> exception
+-- isCaseInsensitive = true, mainString = georgisch, subString = georgisch
+-- isCaseInsensitive = false, mainString = "Hallo", subString = "hallo" -> false als Ergebnis
+
+- neue Testfälle für containsSubstring_mitOptionalemStringParameter
+-- isCaseSensitive = true, subString = "Hallo", mainString wird explizit NICHT übergeben -> false als erwartetes Ergebnis (aber diese Implementierung liefert eine exception)
